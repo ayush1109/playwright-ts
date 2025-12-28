@@ -1,6 +1,7 @@
 import {test, expect, Page} from '@playwright/test';
 import {HomePage} from '../../src/pages/HomePage';
 import { LoginPage } from '../../src/pages/LoginPage';
+import { SignupPage } from '../../src/pages/SignupPage';
 
 test('test register functionality', async({page, baseURL}) => {
 
@@ -16,7 +17,24 @@ test('test register functionality', async({page, baseURL}) => {
 
     // await page.getByPlaceholder('Name').fill('dfgdfg');
 
-    loginPage.enterName('abc');
-    loginPage.enterEmail('abc@ss.com');
-    loginPage.clickSignUp();
+    await loginPage.enterName('abc');
+    await loginPage.enterEmail('abc@ss.com');
+    await loginPage.clickSignUp();
+
+    const signupPage = new SignupPage(page);
+
+    await signupPage.clickTitle();
+    await signupPage.selectDay();
+    await signupPage.selectMonth();
+    await signupPage.selectCheckBox();
+    await signupPage.enterPassword('abcd');
+    await signupPage.enterFirstName('abcd');
+    await signupPage.enterLastName('abcd');
+    await signupPage.enterAddress('abcd');
+    await signupPage.enterState('abcd');
+    await signupPage.enterCity('abcd');
+    await signupPage.enterZipCode('abcd');
+    await signupPage.enterMobile('abcd');
+    await signupPage.clickCreateAccount();
+    
 })
