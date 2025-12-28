@@ -26,4 +26,8 @@ export class BasePage {
     async verifyElementVisible(field: Locator) {
         await expect(field).toBeVisible();
     }
+
+    async verifyTextOfElement(field: Locator, text: string) {
+        await expect(field).toHaveText(text);
+    }
 }

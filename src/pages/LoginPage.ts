@@ -1,27 +1,27 @@
 import {Page, Locator} from '@playwright/test';
+import { BasePage } from './BasePage';
 
-export class LoginPage {
-    readonly page: Page;
-    readonly nameInput: Locator;
-    readonly emailInput: Locator;
-    readonly signupButton: Locator
+export class LoginPage extends BasePage{
+    private readonly nameInput: Locator;
+    private readonly emailInput: Locator;
+    private readonly signupButton: Locator
 
     constructor(page: Page) {
-        this.page = page;
+        super(page);
         this.nameInput = page.getByPlaceholder('Name');
         this.emailInput = page.locator('form').filter({ hasText: 'Signup' }).getByPlaceholder('Email Address');
         this.signupButton = page.getByRole('button', {name: 'Signup'});
     }
     
     async enterName(name: string) {
-        await this.nameInput.fill(name);
+        await this.enterValue(this.nameInput, name)
     }
 
     async enterEmail(email: string) {
-        await this.emailInput.fill(email);
+        await this.enterValue(this.emailInput, email)
     }
 
     async clickSignUp() {
-        await this.signupButton.click();
+        await this.clickButton(this.signupButton);
     }
 }

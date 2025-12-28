@@ -2,6 +2,8 @@ import {test, expect, Page} from '@playwright/test';
 import {HomePage} from '../../src/pages/HomePage';
 import { LoginPage } from '../../src/pages/LoginPage';
 import { SignupPage } from '../../src/pages/SignupPage';
+import { AccountCreated } from '../../src/pages/AccountCreated';
+import { AccountDeleted } from '../../src/pages/AccountDeleted';
 
 test('test register functionality', async({page, baseURL}) => {
 
@@ -36,5 +38,18 @@ test('test register functionality', async({page, baseURL}) => {
     await signupPage.enterZipCode('abcd');
     await signupPage.enterMobile('abcd');
     await signupPage.clickCreateAccount();
+
+    const accountCreated = new AccountCreated(page);
+
+    await accountCreated.accountVisible();
+    await accountCreated.clickContinue();
+
+    await homePage.verifyLoggedInUser();
+    await homePage.clickDeleteAccount();
+
+    const accountDeleted = new AccountDeleted(page);
+    await accountDeleted.accountVisible();
+    await accountDeleted.clickContinue();
+
     
 })
