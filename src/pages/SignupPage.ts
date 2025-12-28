@@ -40,12 +40,12 @@ export class SignupPage extends BasePage{
         await this.clickButton(this.title);
     }
 
-    async selectDay() {
-        await this.selectDropdown(this.dayOption, '2')
+    async selectDay(day: string) {
+        await this.selectDropdown(this.dayOption, day)
     }
 
-    async selectMonth() {
-        await this.selectDropdown(this.monthOption, '3')
+    async selectMonth(month: string) {
+        await this.selectDropdown(this.monthOption, month)
     }
 
     async selectCheckBox() {

@@ -4,6 +4,7 @@ import { LoginPage } from '../../src/pages/LoginPage';
 import { SignupPage } from '../../src/pages/SignupPage';
 import { AccountCreated } from '../../src/pages/AccountCreated';
 import { AccountDeleted } from '../../src/pages/AccountDeleted';
+import * as data from '../test-data/test-data.json';
 
 test('test register functionality', async({page, baseURL}) => {
 
@@ -26,17 +27,17 @@ test('test register functionality', async({page, baseURL}) => {
     const signupPage = new SignupPage(page);
 
     await signupPage.clickTitle();
-    await signupPage.selectDay();
-    await signupPage.selectMonth();
+    await signupPage.selectDay(data.day);
+    await signupPage.selectMonth(data.month);
     await signupPage.selectCheckBox();
-    await signupPage.enterPassword('abcd');
-    await signupPage.enterFirstName('abcd');
-    await signupPage.enterLastName('abcd');
-    await signupPage.enterAddress('abcd');
-    await signupPage.enterState('abcd');
-    await signupPage.enterCity('abcd');
-    await signupPage.enterZipCode('abcd');
-    await signupPage.enterMobile('abcd');
+    await signupPage.enterPassword(data.password);
+    await signupPage.enterFirstName(data.firstName);
+    await signupPage.enterLastName(data.lastName);
+    await signupPage.enterAddress(data.address);
+    await signupPage.enterState(data.state);
+    await signupPage.enterCity(data.city);
+    await signupPage.enterZipCode(data.zipCode);
+    await signupPage.enterMobile(data.mobile);
     await signupPage.clickCreateAccount();
 
     const accountCreated = new AccountCreated(page);
