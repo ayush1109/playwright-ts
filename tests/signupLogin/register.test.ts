@@ -1,53 +1,57 @@
-// import {test, expect, Page} from '@playwright/test';
-import {test, expect} from '../../src/fixtures/MyFixture';
-import * as data from '../test-data/test-data.json';
+// // import {test, expect, Page} from '@playwright/test';
+// import {test, expect} from '../../src/fixtures/MyFixture';
+// import * as data from '../test-data/test-data.json';
 
-test('test register functionality', async({page, baseURL, homePage, loginPage, 
-    signupPage, accountCreated, accountDeleted}) => {
+// test.describe('Register user scenarios', async() => {
 
-    await page.goto(baseURL);
-    await expect(page.getByAltText('Website for automation practice')).toBeVisible();
+// test('test register functionality', async({page, baseURL, homePage, loginPage, 
+//     signupPage, accountCreated, accountDeleted}) => {
 
-    // const homePage = new HomePage(page);
+//     await page.goto(baseURL);
+//     homePage.verifyLogoIsVisible();
 
-    homePage.clickSignOption();
-    await expect(page.getByText('New User Signup!')).toBeVisible();
+//     // const homePage = new HomePage(page);
 
-    // const loginPage = new LoginPage(page);
+//     homePage.clickSignOption();
+//     loginPage.verifySignUpHeadingVisible();
 
-    // await page.getByPlaceholder('Name').fill('dfgdfg');
+//     // const loginPage = new LoginPage(page);
 
-    await loginPage.enterName('abc');
-    await loginPage.enterEmail('abc@ss.com');
-    await loginPage.clickSignUp();
+//     // await page.getByPlaceholder('Name').fill('dfgdfg');
 
-    // const signupPage = new SignupPage(page);
+//     await loginPage.enterName(data.firstName + " " + data.lastName);
+//     await loginPage.enterEmailInSignupForm(data.email);
+//     await loginPage.clickSignUp();
 
-    await signupPage.clickTitle();
-    await signupPage.selectDay(data.day);
-    await signupPage.selectMonth(data.month);
-    await signupPage.selectCheckBox();
-    await signupPage.enterPassword(data.password);
-    await signupPage.enterFirstName(data.firstName);
-    await signupPage.enterLastName(data.lastName);
-    await signupPage.enterAddress(data.address);
-    await signupPage.enterState(data.state);
-    await signupPage.enterCity(data.city);
-    await signupPage.enterZipCode(data.zipCode);
-    await signupPage.enterMobile(data.mobile);
-    await signupPage.clickCreateAccount();
+//     // const signupPage = new SignupPage(page);
 
-    // const accountCreated = new AccountCreated(page);
+//     await signupPage.clickTitle();
+//     await signupPage.selectDay(data.day);
+//     await signupPage.selectMonth(data.month);
+//     await signupPage.selectCheckBox();
+//     await signupPage.enterPassword(data.password);
+//     await signupPage.enterFirstName(data.firstName);
+//     await signupPage.enterLastName(data.lastName);
+//     await signupPage.enterAddress(data.address);
+//     await signupPage.enterState(data.state);
+//     await signupPage.enterCity(data.city);
+//     await signupPage.enterZipCode(data.zipCode);
+//     await signupPage.enterMobile(data.mobile);
+//     await signupPage.clickCreateAccount();
 
-    await accountCreated.accountVisible();
-    await accountCreated.clickContinue();
+//     // const accountCreated = new AccountCreated(page);
 
-    await homePage.verifyLoggedInUser();
-    await homePage.clickDeleteAccount();
+//     await accountCreated.accountVisible();
+//     await accountCreated.clickContinue();
 
-    // const accountDeleted = new AccountDeleted(page);
-    await accountDeleted.accountVisible();
-    await accountDeleted.clickContinue();
+//     await homePage.verifyLoggedInUser(data.firstName + " " + data.lastName);
+//     await homePage.clickDeleteAccount();
+
+//     // const accountDeleted = new AccountDeleted(page);
+//     await accountDeleted.accountVisible();
+//     await accountDeleted.clickContinue();
 
     
-})
+// })
+
+// })

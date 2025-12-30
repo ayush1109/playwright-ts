@@ -5,16 +5,7 @@ import { LoginPage } from '../pages/LoginPage';
 import { SignupPage } from '../pages/SignupPage';
 import { AccountCreated } from '../pages/AccountCreated';
 import { AccountDeleted } from '../pages/AccountDeleted';
-
-type pages = {
-    basePage: BasePage;
-    homePage: HomePage;
-    loginPage: LoginPage;
-    signupPage: SignupPage;
-    accountCreated: AccountCreated;
-    accountDeleted: AccountDeleted;
-
-}
+import {pages} from '../types/page.type';
 
 const testPages = baseTest.extend<pages>({
     basePage: async ({ page }, use) => {
