@@ -1,22 +1,19 @@
-import {test, expect, Page} from '@playwright/test';
-import {HomePage} from '../../src/pages/HomePage';
-import { LoginPage } from '../../src/pages/LoginPage';
-import { SignupPage } from '../../src/pages/SignupPage';
-import { AccountCreated } from '../../src/pages/AccountCreated';
-import { AccountDeleted } from '../../src/pages/AccountDeleted';
+// import {test, expect, Page} from '@playwright/test';
+import {test, expect} from '../../src/fixtures/MyFixture';
 import * as data from '../test-data/test-data.json';
 
-test('test register functionality', async({page, baseURL}) => {
+test('test register functionality', async({page, baseURL, homePage, loginPage, 
+    signupPage, accountCreated, accountDeleted}) => {
 
     await page.goto(baseURL);
     await expect(page.getByAltText('Website for automation practice')).toBeVisible();
 
-    const homePage = new HomePage(page);
+    // const homePage = new HomePage(page);
 
     homePage.clickSignOption();
     await expect(page.getByText('New User Signup!')).toBeVisible();
 
-    const loginPage = new LoginPage(page);
+    // const loginPage = new LoginPage(page);
 
     // await page.getByPlaceholder('Name').fill('dfgdfg');
 
@@ -24,7 +21,7 @@ test('test register functionality', async({page, baseURL}) => {
     await loginPage.enterEmail('abc@ss.com');
     await loginPage.clickSignUp();
 
-    const signupPage = new SignupPage(page);
+    // const signupPage = new SignupPage(page);
 
     await signupPage.clickTitle();
     await signupPage.selectDay(data.day);
@@ -40,7 +37,7 @@ test('test register functionality', async({page, baseURL}) => {
     await signupPage.enterMobile(data.mobile);
     await signupPage.clickCreateAccount();
 
-    const accountCreated = new AccountCreated(page);
+    // const accountCreated = new AccountCreated(page);
 
     await accountCreated.accountVisible();
     await accountCreated.clickContinue();
@@ -48,7 +45,7 @@ test('test register functionality', async({page, baseURL}) => {
     await homePage.verifyLoggedInUser();
     await homePage.clickDeleteAccount();
 
-    const accountDeleted = new AccountDeleted(page);
+    // const accountDeleted = new AccountDeleted(page);
     await accountDeleted.accountVisible();
     await accountDeleted.clickContinue();
 
