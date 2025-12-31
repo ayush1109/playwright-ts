@@ -10,6 +10,8 @@ export class LoginPage extends BasePage{
     private readonly loginButton: Locator;
     private readonly signupHeading: Locator;
     private readonly loginHeading: Locator;
+    private readonly errorMessageLogin: Locator;
+    private readonly errorMessageSignup: Locator;
 
     constructor(page: Page) {
         super(page);
@@ -21,6 +23,8 @@ export class LoginPage extends BasePage{
         this.loginButton = page.getByRole('button', {name: 'Login'});
         this.signupHeading = page.getByText('New User Signup!');
         this.loginHeading = page.getByRole('heading', {name: 'Login to your account'});
+        this.errorMessageLogin = page.getByText('Your email or password is incorrect!');
+        this.errorMessageSignup = page.getByText('Email Address already exist!');
     }
     
     async enterName(name: string) {
@@ -53,5 +57,13 @@ export class LoginPage extends BasePage{
 
     async verifyLoginHeadingVisible() {
         await this.verifyElementVisible(this.loginHeading);
+    }
+
+    async verifyErrorMessageVisible() {
+        await this.verifyElementVisible(this.errorMessageLogin);
+    }
+
+    async verifyErrorMessageSignupVisible() {
+        await this.verifyElementVisible(this.errorMessageSignup);
     }
 }

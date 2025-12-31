@@ -3,6 +3,8 @@
     "lastName": "abcd",
     "email": "abcd@ss.com",
     "password": "abcd",
+    "incorrectEmail":"incorrect@ss.com",
+    "incorrectPassword":"incorrect",
     "address": "abcd",
     "state": "abcd",
     "city": "abcd",

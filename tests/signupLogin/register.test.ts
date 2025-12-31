@@ -1,57 +1,50 @@
-// import {test, expect, Page} from '@playwright/test';
-import {test, expect} from '../../src/fixtures/MyFixture';
+import { test } from '../../src/fixtures/MyFixture';
+import { deleteUser } from '../../src/utils/deleteUser';
+import { loginUser } from '../../src/utils/loginUser';
+import { registerUser } from '../../src/utils/registerUser';
 import * as data from '../test-data/test-data.json';
 
-test.describe('Register user scenarios', async() => {
+test.describe('Register user scenarios', async () => {
 
-test('test register functionality', async({page, baseURL, homePage, loginPage, 
-    signupPage, accountCreated, accountDeleted}) => {
+    test.beforeEach(async ({ page, baseURL, homePage }) => {
+        await page.goto(baseURL);
 
-    await page.goto(baseURL);
-    homePage.verifyLogoIsVisible();
+        await homePage.verifyLogoIsVisible();
+    })
 
-    // const homePage = new HomePage(page);
+    test('test register functionality', async ({ page, homePage, loginPage, accountDeleted }) => {
 
-    homePage.clickSignOption();
-    loginPage.verifySignUpHeadingVisible();
+        await homePage.clickSignOption();
 
-    // const loginPage = new LoginPage(page);
+        await loginPage.verifySignUpHeadingVisible();
 
-    // await page.getByPlaceholder('Name').fill('dfgdfg');
+        await registerUser(page);
 
-    await loginPage.enterName(data.firstName + " " + data.lastName);
-    await loginPage.enterEmailInSignupForm(data.email);
-    await loginPage.clickSignUp();
+        await homePage.verifyLoggedInUser(data.firstName + " " + data.lastName);
+        await homePage.clickDeleteAccount();
 
-    // const signupPage = new SignupPage(page);
+        await accountDeleted.accountVisible();
+        await accountDeleted.clickContinue();
+    })
 
-    await signupPage.clickTitle();
-    await signupPage.selectDay(data.day);
-    await signupPage.selectMonth(data.month);
-    await signupPage.selectCheckBox();
-    await signupPage.enterPassword(data.password);
-    await signupPage.enterFirstName(data.firstName);
-    await signupPage.enterLastName(data.lastName);
-    await signupPage.enterAddress(data.address);
-    await signupPage.enterState(data.state);
-    await signupPage.enterCity(data.city);
-    await signupPage.enterZipCode(data.zipCode);
-    await signupPage.enterMobile(data.mobile);
-    await signupPage.clickCreateAccount();
+    test('test register functionality with existing email', async ({ page, homePage,loginPage }) => {
 
-    // const accountCreated = new AccountCreated(page);
+        await homePage.clickSignOption();
 
-    await accountCreated.accountVisible();
-    await accountCreated.clickContinue();
+        await loginPage.verifySignUpHeadingVisible();
 
-    await homePage.verifyLoggedInUser(data.firstName + " " + data.lastName);
-    await homePage.clickDeleteAccount();
+        await registerUser(page);
 
-    // const accountDeleted = new AccountDeleted(page);
-    await accountDeleted.accountVisible();
-    await accountDeleted.clickContinue();
+        await homePage.clickLogout();
 
-    
-})
+        await loginPage.verifyLoginHeadingVisible();
+        await loginPage.enterName(data.firstName + " " + data.lastName);
+        await loginPage.enterEmailInSignupForm(data.email);
+        await loginPage.clickSignUp();
+        await loginPage.verifyErrorMessageSignupVisible();
+
+        await loginUser(page);
+        await deleteUser(page);
+    })
 
 })

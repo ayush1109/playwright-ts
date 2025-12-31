@@ -12,9 +12,10 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testMatch: ['tests/signupLogin/*'],
+  timeout: 60000,
+  testDir: './tests',
   /* Run tests in files in parallel */
-  fullyParallel: true,
+  fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
@@ -31,9 +32,12 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     testIdAttribute: 'id',
-    headless: true,
+    headless: false,
     navigationTimeout: 60000,
-    video: 'on'
+    video: 'on',
+    launchOptions: {
+      args: ["--start-maximized"]
+    }
   },
   outputDir: 'test-results',
 
@@ -41,7 +45,10 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        // ...devices['Desktop Chrome'],
+        viewport: null
+      },
     },
 
     // {
