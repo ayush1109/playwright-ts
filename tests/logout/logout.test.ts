@@ -6,14 +6,12 @@ import { registerUser } from "../../src/utils/registerUser";
 test.describe('Logout user scenarios', async () => {
 
     test.beforeEach(async ({ page, baseURL, homePage }) => {
-        await page.goto(baseURL);
+        await page.goto(baseURL + 'login');
 
         await homePage.verifyLogoIsVisible();
     })
 
     test('test logout functionality', async ({ page, homePage, loginPage }) => {
-        await homePage.clickSignOption();
-
         await loginPage.verifySignUpHeadingVisible();
 
         await registerUser(page);

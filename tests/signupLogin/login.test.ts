@@ -6,15 +6,12 @@ import * as data from '../test-data/test-data.json';
 test.describe('Login user scenarios', async () => {
 
     test.beforeEach(async ({ page, baseURL, homePage }) => {
-        await page.goto(baseURL);
+        await page.goto(baseURL + 'login');
 
         await homePage.verifyLogoIsVisible();
     })
 
     test('test Login functionality', async ({ page, homePage, loginPage, accountDeleted }) => {
-
-        await homePage.clickSignOption();
-
         await loginPage.verifySignUpHeadingVisible();
 
         await registerUser(page);
@@ -34,9 +31,6 @@ test.describe('Login user scenarios', async () => {
     })
 
     test('test incorrect login functionality', async ({homePage, loginPage }) => {
-
-        await homePage.clickSignOption();
-
         await loginPage.verifyLoginHeadingVisible();
         await loginPage.enterEmailInLoginForm(data.incorrectEmail);
         await loginPage.enterPassword(data.incorrectPassword);

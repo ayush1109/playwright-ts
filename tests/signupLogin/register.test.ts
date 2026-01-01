@@ -6,20 +6,16 @@ import * as data from '../test-data/test-data.json';
 
 test.describe('Register user scenarios', async () => {
 
-    test.beforeEach(async ({ page, baseURL, homePage }) => {
-        await page.goto(baseURL);
+    test.beforeEach(async ({ page, baseURL, homePage, loginPage }) => {
+        await page.goto(baseURL + 'login');
 
         await homePage.verifyLogoIsVisible();
+        await homePage.clickSignOption();
+        await loginPage.verifySignUpHeadingVisible();
+        await registerUser(page);
     })
 
     test('test register functionality', async ({ page, homePage, loginPage, accountDeleted }) => {
-
-        await homePage.clickSignOption();
-
-        await loginPage.verifySignUpHeadingVisible();
-
-        await registerUser(page);
-
         await homePage.verifyLoggedInUser(data.firstName + " " + data.lastName);
         await homePage.clickDeleteAccount();
 
@@ -28,13 +24,6 @@ test.describe('Register user scenarios', async () => {
     })
 
     test('test register functionality with existing email', async ({ page, homePage,loginPage }) => {
-
-        await homePage.clickSignOption();
-
-        await loginPage.verifySignUpHeadingVisible();
-
-        await registerUser(page);
-
         await homePage.clickLogout();
 
         await loginPage.verifyLoginHeadingVisible();
