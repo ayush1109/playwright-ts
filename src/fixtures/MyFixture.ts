@@ -5,6 +5,7 @@ import { LoginPage } from '../pages/LoginPage';
 import { SignupPage } from '../pages/SignupPage';
 import { AccountCreated } from '../pages/AccountCreated';
 import { AccountDeleted } from '../pages/AccountDeleted';
+import { ContactUs } from '../pages/ContactUs';
 import {pages} from '../types/page.type';
 
 const testPages = baseTest.extend<pages>({
@@ -25,6 +26,9 @@ const testPages = baseTest.extend<pages>({
     },
     accountDeleted: async ({ page }, use) => {
         await use(new AccountDeleted(page));
+    },
+    contactUs: async ({ page }, use) => {
+        await use(new ContactUs(page));
     }
 })
 

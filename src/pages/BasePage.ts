@@ -30,4 +30,17 @@ export class BasePage {
     async verifyTextOfElement(field: Locator, text: string) {
         await expect(field).toHaveText(text);
     }
+
+    async uploadSingleFile(field: Locator, path: string) {
+        await field.setInputFiles(path);
+    }
+
+    async uploadMultipleFiles(field: Locator, [...paths]: string) {
+        await field.setInputFiles(paths);
+    }
+    
+    async handleAlert() {
+        this.page.on('dialog', dialog => dialog.accept());
+    }
+
 }

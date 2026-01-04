@@ -7,6 +7,7 @@ export class HomePage extends BasePage{
     private readonly deleteAccount: Locator;
     private readonly logo: Locator;
     private readonly logout: Locator;
+    private readonly contactUs: Locator;
 
     constructor(page: Page) {
         super(page);
@@ -15,6 +16,7 @@ export class HomePage extends BasePage{
         this.deleteAccount = page.locator('//a[contains(text(), "Delete Account")]');
         this.logout = page.locator('//a[contains(text(), "Logout")]');
         this.logo = page.getByAltText('Website for automation practice');
+        this.contactUs = page.locator('//a[contains(text(), "Contact us")]');
     }
 
     async clickSignOption() {
@@ -36,5 +38,10 @@ export class HomePage extends BasePage{
     async verifyLogoIsVisible() {
         await this.verifyElementVisible(this.logo);
     }
+
+    async clickContactUs() {
+        await this.clickButton(this.contactUs);
+    }
+
 
 }

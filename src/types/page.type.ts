@@ -4,6 +4,7 @@ import { LoginPage } from '../pages/LoginPage';
 import { SignupPage } from '../pages/SignupPage';
 import { AccountCreated } from '../pages/AccountCreated';
 import { AccountDeleted } from '../pages/AccountDeleted';
+import { ContactUs } from '../pages/ContactUs';
 
 export type pages = {
     basePage: BasePage;
@@ -12,5 +13,7 @@ export type pages = {
     signupPage: SignupPage;
     accountCreated: AccountCreated;
     accountDeleted: AccountDeleted;
+    contactUs: ContactUs;
+
 
 }
