@@ -8,6 +8,7 @@ export class HomePage extends BasePage{
     private readonly logo: Locator;
     private readonly logout: Locator;
     private readonly contactUs: Locator;
+    private readonly testCases: Locator;
 
     constructor(page: Page) {
         super(page);
@@ -17,6 +18,7 @@ export class HomePage extends BasePage{
         this.logout = page.locator('//a[contains(text(), "Logout")]');
         this.logo = page.getByAltText('Website for automation practice');
         this.contactUs = page.locator('//a[contains(text(), "Contact us")]');
+        this.testCases = page.locator('//a[contains(text(), "Test Cases")]');
     }
 
     async clickSignOption() {
@@ -41,6 +43,10 @@ export class HomePage extends BasePage{
 
     async clickContactUs() {
         await this.clickButton(this.contactUs);
+    }
+
+    async clickTestCases() {
+        await this.clickButton(this.testCases);
     }
 
 

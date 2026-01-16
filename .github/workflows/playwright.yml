@@ -17,7 +17,12 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    - name: Create .env file
+      run: |
+        echo "api_key=${{secrets.api_key}}" > .env  
     - name: Run Playwright tests
+      env:
+        api_key: ${{secrets.api_key}}
       run: npx playwright test
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
