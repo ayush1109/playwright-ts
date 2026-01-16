@@ -1,5 +1,5 @@
 import {test} from '../../src/fixtures/MyFixture';
-import * as data from '../test-data/test-data.json';
+import * as data from '../../tests/test-data/ui/test-data.json';
 import path from 'path';
 test.describe('Contact scenarios', async () => {
 

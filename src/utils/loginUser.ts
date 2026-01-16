@@ -1,6 +1,6 @@
 import { Page } from "@playwright/test";
 import { LoginPage } from "../pages/LoginPage";
-import * as data from '../../tests/test-data/test-data.json';
+import * as data from '../../tests/test-data/ui/test-data.json';
 import { HomePage } from "../pages/HomePage";
 
 export async function loginUser(page: Page) {

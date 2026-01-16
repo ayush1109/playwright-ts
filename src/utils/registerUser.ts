@@ -2,7 +2,7 @@ import { Page } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { SignupPage } from '../pages/SignupPage';
 import { AccountCreated } from '../pages/AccountCreated';
-import * as data from '../../tests/test-data/test-data.json'
+import * as data from '../../tests/test-data/ui/test-data.json';
 
 export async function registerUser(page: Page) {
 

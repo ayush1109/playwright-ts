@@ -1,4 +1,4 @@
-import { test, expect, request } from "@playwright/test";
+import { test, expect } from "@playwright/test";
 import * as dotenv from 'dotenv';
 dotenv.config();
 test.describe('Functional test cases', async () => {

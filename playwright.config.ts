@@ -34,6 +34,7 @@ export default defineConfig({
     testIdAttribute: 'id',
     headless: true,
     navigationTimeout: 60000,
+    actionTimeout: 30000,
     video: 'on',
     launchOptions: {
       args: ["--start-maximized"]

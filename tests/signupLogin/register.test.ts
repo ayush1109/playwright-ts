@@ -2,7 +2,7 @@ import { test } from '../../src/fixtures/MyFixture';
 import { deleteUser } from '../../src/utils/deleteUser';
 import { loginUser } from '../../src/utils/loginUser';
 import { registerUser } from '../../src/utils/registerUser';
-import * as data from '../test-data/test-data.json';
+import * as data from '../../tests/test-data/ui/test-data.json';
 
 test.describe('Register user scenarios', async () => {
 
