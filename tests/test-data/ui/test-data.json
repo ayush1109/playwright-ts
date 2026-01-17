@@ -12,7 +12,7 @@
     "mobile": "abcd",
     "day": "3",
     "month": "3",
-    "filePath": "D:/playwright/tests/test-data/ui/test-data.json",
+    "filePath": "/test-data/ui/image.png",
     "subject": "abcd",
     "message": "abcd"
 }

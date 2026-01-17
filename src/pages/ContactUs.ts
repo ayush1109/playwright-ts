@@ -26,6 +26,7 @@ export class ContactUs extends BasePage {
     }
 
     async verifyGetInTouchVisible() {
+        await this.page.waitForLoadState('load');
         await this.verifyElementVisible(this.getInTouch);
     }
 
@@ -59,7 +60,6 @@ export class ContactUs extends BasePage {
     }
 
     async clickHomeButton() {
-        this.page.waitForTimeout(5000);
         await this.clickButton(this.homeButton);
     }
 

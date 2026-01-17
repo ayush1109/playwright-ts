@@ -16,7 +16,7 @@ test.describe('Contact scenarios', async () => {
         await contactUs.enterEmail(data.email);
         await contactUs.enterSubject(data.subject);
         await contactUs.enterMessage(data.message);
-        await contactUs.uploadFile(data.filePath);
+        await contactUs.uploadFile(path.resolve(__dirname, '..') + data.filePath);
         await contactUs.clickSubmit();
         await contactUs.verifySuccessMessage();
         await contactUs.clickHomeButton();
